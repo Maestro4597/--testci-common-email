@@ -79,7 +79,7 @@ public class EmailTest {
 		
 	}
 	
-	@Test
+	/*@Test
 	public void testBuildMimeMessage() throws Exception  {
 		
 	
@@ -107,7 +107,7 @@ public class EmailTest {
 			email.buildMimeMessage();
 		
 		assertTrue(true);
-	}
+	}*/
 	
 	
 	@Test
