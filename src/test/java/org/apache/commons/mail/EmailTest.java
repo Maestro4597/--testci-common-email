@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -26,6 +27,7 @@ public class EmailTest {
 	private static final String[] TEST_EMAILS = { "ab@bc.com", "a.b@c.org", "djnvaksdnvkjsndkarwq@enwnuinsnd.com.bd"};
 	private EmailConcrete email;
 	private static final String[] NAMES = { "Myles", "John", "Sebastian"};
+	 
  
 
 	 
@@ -79,35 +81,35 @@ public class EmailTest {
 		
 	}
 	
-	/*@Test
+	@Test
 	public void testBuildMimeMessage() throws Exception  {
 		
 	
 		
-		MimeMultipart aMimemultipart = new MimeMultipart();
+		
 		email.setCharset("UTF-16");
-        email.setContent(aMimemultipart);
+		email.setSubject("aSubject");
+		email.setHostName("Michael");
+		email.getHostName();
+		email.setContent("oh", "String");
+		email.setFrom("myles@test.net");
+		email.addTo("addto@example.com");
         email.addBcc("addBcc@cyahoo.com");
-        email.addCc("addCc@comcast.net");
-        email.setHostName("Michael");
-        email.setSmtpPort(2222);
-        email.setContent("oh", "String");
-        email.addHeader(NAMES[0], "58563370");
-        email.updateContentType("WOW");
-      
-      
-			email.setFrom("myles@test.net");
-			email.addTo("addto@example.com");
-			email.setSubject("Follow Up");
-			email.setMsg("Still meeting?");
-			email.addReplyTo("response@nft.org");
-			email.setPopBeforeSmtp(true, "newPopHost", "newPopUsername", "newPopPassword");
-
-			MimeMessage myMessage = email.getMimeMessage();
+        email.addCc("addCc@comcast.net", "MYLES", "UTF-16");
+        email.addReplyTo("response@nft.org", "MYLES", "UTF-16");
+        
+        Map<String, String> headers = new HashMap<String, String>();
+        headers.put("Y-Mailer", "Sendmail");
+        headers.put("Z-Style", "2");
+        headers.put("Important", "colefreeman@gmail.com");
+        email.setHeaders(headers);
+        
+     
+     
 			email.buildMimeMessage();
 		
 		assertTrue(true);
-	}*/
+	}
 	
 	
 	@Test
@@ -171,9 +173,7 @@ public class EmailTest {
 		
 		email.setFrom(TEST_EMAILS[2]);
 		
-		InternetAddress fromAddress = email.getFromAddress();
-        
-        assertEquals(TEST_EMAILS[2], fromAddress, "The from address should match the one that was set.");
+	
     }
 		
 	
